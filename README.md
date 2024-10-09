@@ -13,3 +13,5 @@ train_config.py contains the training settings- hyperparameters for training the
 train.py is the code to run for training the model
 samples.py is to be used to predict the parameter values for a given image(testing). This uses a checkpoint saved after the model is trained.
 test.py sets the seed for training and calls the classes.
+
+Reference readmes contain the library requirements and the lisence data from 'https://github.com/cam-cambridge/caxton' - to be modified at the end based on our project.
