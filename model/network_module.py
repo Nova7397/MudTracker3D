@@ -10,6 +10,7 @@ import pytorch_lightning as pl
 from datetime import datetime
 import pandas as pd
 import os
+from torchmetrics import Accuracy
 
 class ParametersClassifier(pl.LightningModule):
     def __init__(
@@ -42,17 +43,17 @@ class ParametersClassifier(pl.LightningModule):
                     param.requires_grad = False
         self.save_hyperparameters()
 
-        self.train_acc = pl.metrics.Accuracy()
-        self.train_acc0 = pl.metrics.Accuracy()
-        self.train_acc1 = pl.metrics.Accuracy()
-        self.train_acc2 = pl.metrics.Accuracy()
-        self.train_acc3 = pl.metrics.Accuracy()
-        self.val_acc = pl.metrics.Accuracy()
-        self.val_acc0 = pl.metrics.Accuracy()
-        self.val_acc1 = pl.metrics.Accuracy()
-        self.val_acc2 = pl.metrics.Accuracy()
-        self.val_acc3 = pl.metrics.Accuracy()
-        self.test_acc = pl.metrics.Accuracy()
+        self.train_acc = Accuracy(task="multiclass", num_classes=num_classes)
+        self.train_acc0 = Accuracy(task="multiclass", num_classes=num_classes)
+        self.train_acc1 = Accuracy(task="multiclass", num_classes=num_classes)
+        self.train_acc2 = Accuracy(task="multiclass", num_classes=num_classes)
+        self.train_acc3 = Accuracy(task="multiclass", num_classes=num_classes)
+        self.val_acc = Accuracy(task="multiclass", num_classes=num_classes)
+        self.val_acc0 = Accuracy(task="multiclass", num_classes=num_classes)
+        self.val_acc1 = Accuracy(task="multiclass", num_classes=num_classes)
+        self.val_acc2 = Accuracy(task="multiclass", num_classes=num_classes)
+        self.val_acc3 = Accuracy(task="multiclass", num_classes=num_classes)
+        self.test_acc = Accuracy(task="multiclass", num_classes=num_classes)
 
         self.name = "ResidualAttentionClassifier"
         self.retrieve_layers = retrieve_layers

@@ -1,3 +1,4 @@
+# dataset_module.py
 import os
 from torch.utils.data import DataLoader
 import pytorch_lightning as pl
@@ -5,9 +6,11 @@ from torchvision import transforms
 import torch
 from PIL import ImageFile
 from data.dataset import ParametersDataset
+from balance_dataset import balance_dataset
+import torch.nn.functional as F
+from torch import nn
 
 ImageFile.LOAD_TRUNCATED_IMAGES = True
-
 
 class ParametersDataModule(pl.LightningDataModule):
     def __init__(
@@ -36,33 +39,28 @@ class ParametersDataModule(pl.LightningDataModule):
         self.std = std
         self.transform = transform
 
+        # Transforms
         if self.transform:
-            self.pre_crop_transform = transforms.Compose(
-                [
-                    transforms.RandomRotation(10),
-                    transforms.RandomPerspective(distortion_scale=0.1, p=0.1),
-                ]
-            )
-            self.post_crop_transform = transforms.Compose(
-                [
-                    transforms.RandomResizedCrop(224, scale=(0.9, 1.0)),
-                    transforms.RandomHorizontalFlip(),
-                    transforms.ColorJitter(
-                        brightness=0.1, contrast=0.1, hue=0.1, saturation=0.1
-                    ),
-                    transforms.ToTensor(),
-                    transforms.Normalize(self.mean, self.std),
-                ]
-            )
+            self.pre_crop_transform = transforms.Compose([
+                transforms.RandomRotation(10),
+                transforms.RandomPerspective(distortion_scale=0.1, p=0.1),
+            ])
+            self.post_crop_transform = transforms.Compose([
+                transforms.RandomResizedCrop(224, scale=(0.9, 1.0)),
+                transforms.RandomHorizontalFlip(),
+                transforms.ColorJitter(
+                    brightness=0.1, contrast=0.1, hue=0.1, saturation=0.1
+                ),
+                transforms.ToTensor(),
+                transforms.Normalize(self.mean, self.std),
+            ])
         else:
             self.pre_crop_transform = None
-            self.post_crop_transform = transforms.Compose(
-                [
-                    transforms.Resize(224),
-                    transforms.ToTensor(),
-                    transforms.Normalize(self.mean, self.std),
-                ]
-            )
+            self.post_crop_transform = transforms.Compose([
+                transforms.Resize(224),
+                transforms.ToTensor(),
+                transforms.Normalize(self.mean, self.std),
+            ])
         self.dims = (3, 224, 224)
         self.num_classes = 3
         self.load_saved = load_saved
@@ -75,9 +73,12 @@ class ParametersDataModule(pl.LightningDataModule):
         self.use_hotend = hotend
 
     def setup(self, stage=None, save=False, test_all=False):
-        # Assign train/val datasets for use in dataloaders
+        # Apply dataset balancing
+        balanced_csv_file, self.class_weights = balance_dataset(self.csv_file)
+        
+        # Load the balanced dataset
         self.dataset = ParametersDataset(
-            csv_file=self.csv_file,
+            csv_file=balanced_csv_file,
             root_dir=self.data_dir,
             image_dim=self.image_dim,
             pre_crop_transform=self.pre_crop_transform,
@@ -88,57 +89,21 @@ class ParametersDataModule(pl.LightningDataModule):
             hotend=self.use_hotend,
             per_img_normalisation=self.per_img_normalisation,
         )
-        train_size, val_size = int(0.7 * len(self.dataset)), int(
-            0.2 * len(self.dataset)
-        )
+
+        # Split dataset
+        train_size, val_size = int(0.7 * len(self.dataset)), int(0.2 * len(self.dataset))
         test_size = len(self.dataset) - train_size - val_size
 
-        if save:
-            (
-                self.train_dataset,
-                self.val_dataset,
-                self.test_dataset,
-            ) = torch.utils.data.random_split(
-                self.dataset, [train_size, val_size, test_size]
-            )
-            try:
-                os.makedirs("data/{}/".format(self.dataset_name))
-            except:
-                pass
-            torch.save(self.train_dataset, "data/{}/train.pt".format(self.dataset_name))
-            torch.save(self.val_dataset, "data/{}/val.pt".format(self.dataset_name))
-            torch.save(self.test_dataset, "data/{}/test.pt".format(self.dataset_name))
-
-        if stage == "fit" or stage is None:
-            if self.load_saved:
-                self.train_dataset, self.val_dataset = torch.load(
-                    "data/{}/train.pt".format(self.dataset_name)
-                ), torch.load("data/{}/val.pt".format(self.dataset_name))
-            else:
-                self.train_dataset, self.val_dataset, _ = torch.utils.data.random_split(
-                    self.dataset, [train_size, val_size, test_size]
-                )
-
-        # Assign test dataset for use in dataloader(s)
-        if stage == "test" or stage is None:
-            if self.load_saved:
-                self.test_dataset = torch.load(
-                    "data/{}/test.pt".format(self.dataset_name)
-                )
-            else:
-                if test_all:
-                    self.test_dataset = self.dataset
-                else:
-                    _, _, self.test_dataset = torch.utils.data.random_split(
-                        self.dataset, [train_size, val_size, test_size]
-                    )
+        self.train_dataset, self.val_dataset, self.test_dataset = torch.utils.data.random_split(
+            self.dataset, [train_size, val_size, test_size]
+        )
 
     def train_dataloader(self):
         return DataLoader(
             self.train_dataset,
             batch_size=self.batch_size,
             shuffle=True,
-            num_workers=8,
+            num_workers=0,
             pin_memory=True,
         )
 
@@ -146,7 +111,7 @@ class ParametersDataModule(pl.LightningDataModule):
         return DataLoader(
             self.val_dataset,
             batch_size=self.batch_size,
-            num_workers=8,
+            num_workers=0,
             pin_memory=True,
         )
 
@@ -154,6 +119,19 @@ class ParametersDataModule(pl.LightningDataModule):
         return DataLoader(
             self.test_dataset,
             batch_size=self.batch_size,
-            num_workers=8,
+            num_workers=0,
             pin_memory=True,
         )
+
+# In your model class, use the weights for loss calculation:
+class YourModel(pl.LightningModule):
+    def __init__(self, class_weights):
+        super().__init__()
+        self.class_weights = torch.tensor(class_weights, dtype=torch.float32)
+        self.criterion = nn.CrossEntropyLoss(weight=self.class_weights)
+
+    def training_step(self, batch, batch_idx):
+        inputs, targets = batch
+        outputs = self(inputs)
+        loss = self.criterion(outputs, targets)
+        return loss
