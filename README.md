@@ -1,6 +1,5 @@
 # MudTracker3D
-Error detection and real-time tracking of additive manufacturing process using clay
-test changes
+Accompanying code to CORE 2024 project: "MudTracket3d- Clay 3d printing extrusion monitoring and auto-calibration using Machine Learning"
 
 Folders: 
 Data collection folder contains the codes to connect the system setup with raspberry pi and the WASP printer in order to create our dataset
