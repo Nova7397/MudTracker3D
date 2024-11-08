@@ -1,0 +1,8 @@
+gpus: 1
+lr: 0.001
+num_classes: 3
+retrieve_layers: false
+retrieve_masks: true
+test_overwrite_filename: false
+trainable_layers: 1
+transfer: false
