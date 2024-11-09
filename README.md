@@ -37,6 +37,14 @@ We use Attention 56 Network model for multi head classification task for our cla
 ### Attention 56 Network model:
 ![MLmodel](https://github.com/Nova7397/MudTracker3D/blob/main/media/ML%20model.png)
 
+(Source: Brion. D., &amp, Pattinson, S. (2022) Generalisable 3D printing error detection and correction via multihead neural networks). We used the ‘Attention-56 network’ published by Wang et. Al (2017) in a multi head network as is used for a similar objective of classifying images into parameter qualities for FDM printing using plastics in Brion et. Al, 2022. We derive our machine learning process and aim to modify the parameters based on our clay printing parameters. 
+
+3x ATTENTION MODULES: 
+Enable the model to focus on the most relevant features within an image, enhancing its ability to capture critical details.
+6x RESIDUAL BLOCKS: 
+Introduce shortcuts that facilitate more efficient learning by allowing information to bypass certain layers, thereby improving model performance and convergence.
+*We have not provided trained model checkpoints in the repository due to space constraints*
+
 ### Results from samples in repo:
 
 The results for the models in this work were trained on a workstation running Ubuntu 18.04 equipped with an i9-9900K, 64GB RAM, 2x Nvidia Quadro RTX 5000 GPUs.
