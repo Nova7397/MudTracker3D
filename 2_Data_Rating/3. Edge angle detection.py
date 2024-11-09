@@ -6,7 +6,7 @@ import os
 ## This script applies to: \Rating pics\Overhang_angle ##
 
 # Path to the image
-image_path = r"C:\Users\dinki\Desktop\TU BK BT\2Y-1Q\CORE\MudTracker3D\Rating pics\B1.1\B1.1_overhang_modified.jpg" ###change location
+image_path = r"\Rating pics\Raw_file\A1.4_overhang.jpg" ###change location
 
 # Check if the file exists
 if not os.path.isfile(image_path):

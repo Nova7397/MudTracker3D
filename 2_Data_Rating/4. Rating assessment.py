@@ -3,7 +3,7 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 
 # Load data
-data = pd.read_csv("C:\\Users\\dinki\\OneDrive - Delft University of Technology\\MSc3_CORE_Group 6\\Dataset\\Prototype V2\\Rating assessment\\Prototype rating.csv")
+data = pd.read_csv(r"\Rating assessment\Prototype rating.csv")
 
 print(data.columns)
 

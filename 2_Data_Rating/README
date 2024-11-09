@@ -1,0 +1,73 @@
+# Data- Rating
+This folder contains 4 scripts that are used for rating our 3D printed clay specimen. These scripts are specific to our object.
+These scripts can be run with sample images of our specimen provided in folder Rating pics\Raw_file\A1.4
+
+## Canny Edge Detection
+This script performs Canny edge detection on an image, with interactive threshold control, and saves the output if desired.
+
+### Setup
+Folder Structure:
+Select raw images in \Rating pics\Raw_file
+Output images will be saved in \Rating pics\Edge_detection\A1.4\
+#### Sample results have been saved in \Rating pics\Edge_detection\A1.4\ for reference
+
+#### Dependencies: Ensure the following libraries are installed:
+    pencv-python
+    matplotlib
+    numpy
+
+
+
+
+## (Overhang) Edge Angle Detection Script
+This script detects overhang angles in a 3D printing image using Hough Line Transform. Detected lines are drawn, and their angles are labeled.
+
+### Requirements
+Dependencies: Make sure the following libraries are installed:
+    opencv-python
+    numpy
+
+### How it Works
+    Load Image: Reads the grayscale image and resizes it for processing.
+
+    Detect Lines: Uses the Hough Line Transform to detect lines in the binary image.
+
+    Filter Lines: Removes redundant lines based on a specified angle tolerance (default is ±5°).
+
+Display and Save Results:
+Draws detected lines in red.
+Annotates the angle of each line in green text.
+Display: Shows the final image with detected lines and angles in a new window.
+
+Key Parameters
+distance_resolution: Pixel resolution for Hough Line accumulator (1 pixel).
+angle_resolution: Angle resolution in radians (1 degree).
+threshold: Minimum votes needed to detect a line (default is 40).
+Adjust these values to refine line detection as needed.
+
+
+
+
+## Rating Assessment
+## Data Visualization
+We use this script to visualize prototype ratings data through heatmaps, parallel coordinates, pair plots, and 3D scatter plots, providing insights into various print quality scores like overhang, zigzag, and freeform.
+
+### Requirements
+Dependencies: Install the following packages if not already available:
+    pandas
+    seaborn
+    matplotlib
+
+### Plots and Visualizations
+1. Heatmaps of Scores
+For each score type (Overhang, Zigzag, and Freeform), a heatmap is created.
+The heatmaps display how scores vary based on Layer_height and Extrusion_rate.
+2. Parallel Coordinates Plot
+Shows patterns across scores for each combination of Layer_height and Extrusion_rate.
+This plot helps in visualizing the relationships and trends across different score types.
+3. Pair Plot
+Provides pairwise relationships between all variables in the data.
+Useful for identifying correlations and trends between scores and the parameters.
+4. 3D Scatter Plot
+Visualizes the relationship between Layer_height, Extrusion_rate, and the Overhang score.
+Offers a spatial perspective to observe how the overhang score is affected by the other two parameters.

@@ -10,7 +10,7 @@ def callback(input):
 
 def cannyEdge():
     root = os.getcwd()
-    imgPath = os.path.join(root,'C:\\Users\\dinki\\Delft University of Technology\\Wei Wei - MSc3_CORE_Group 6\\Dataset\\Prototype V2\\Rating pics\\B1.1\\B1.1_overhang.jpg') ### change location 
+    imgPath = os.path.join(root,r'\Rating pics\Edge_detection\A1.4\A1.4_overhang canny.jpg') ### change location 
     img = cv.imread(imgPath)
     img = cv.cvtColor(img,cv.COLOR_BGR2RGB)
 
@@ -48,4 +48,3 @@ def cannyEdge():
 
 if __name__ == '__main__':
     cannyEdge()
-
