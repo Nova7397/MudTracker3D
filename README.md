@@ -43,7 +43,8 @@ In the top level `data` directory inside Machine learning, there are 4 cropped a
 
 You can test these samples with the provided script and should receive an output similar to the one below. On our system iterating through each sample individually takes around 0.07s per sample. Naturally if the batch size is increased the rate per sample can be greatly increased.
 
-'```bash python src/samples.py'
+```bash 
+python src/samples.py
 
 ********* CAXTON sample predictions *********
 Flow rate | Lateral speed | Z offset | Hotend
@@ -53,6 +54,7 @@ Input: B7a_279.jpg_label_[1 2].jpg -> Prediction: [1 2]
 Input: C2a_034.jpg_label_[2 1].jpg -> Prediction: [2 1]
 Input: D5a_044.jpg_label_[2 2].jpg -> Prediction: [2 2]
 Completed 8 predictions in 0.56s
+```
 
 ## Custom slicing(Grasshopper)
 Our final folder consists of grasshopper script of our custom slicer developed to slice a geometry for 3D printing clay using WASP printer.
