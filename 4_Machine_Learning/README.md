@@ -1,5 +1,5 @@
 # MudTracker3D
-Clay 3d printing extrusion monitoring and auto-calibration using Machine Learning
+Clay 3d printing extrusion monitoring and auto-calibration using Machine Learning. We use Attention 56 Network model for multi head classification task for our clay 3D printing parameter adjustments of layer height and extrusion amount. We implement a modified training method from 'https://github.com/cam-cambridge/caxton' for FDM Printing using Plastic. We modify the model to two heads based on two control parameters of LDM printing. We have limited ourselves to the most important parameters which we believe are responsible for quality control of clay 3D printing. The license use for the model can be found at https://github.com/cam-cambridge/caxton/blob/main/LICENSE
 
 ## Setup
 
