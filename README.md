@@ -1,4 +1,6 @@
 # MudTracker3D
+[[ProjectVideo](https://youtu.be/TLkMxpruhxE)]
+
 Accompanying code to CORE 2024 project: "MudTracket3d- Clay 3d printing extrusion monitoring and auto-calibration using Machine Learning"
 Aim: To develop an auto calibration system for adjusting Layer height and Extrusion amount for WASP clay 3D printing using Machine Learning.
 ### Project process workflow:
