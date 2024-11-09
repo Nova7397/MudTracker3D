@@ -48,7 +48,7 @@ Introduce shortcuts that facilitate more efficient learning by allowing informat
 
 ### Results from samples in repo:
 
-The results for the models in this work were trained on a workstation running Ubuntu 18.04 equipped with an i9-9900K, 64GB RAM, 2x Nvidia Quadro RTX 5000 GPUs.
+The results for the models in this work were trained on a workstation using an Intel Core i7-13700H CPU (14 cores and 20 threads), an Nvidia GeForce RTX 4060 Laptop GPU, and 16GB of RAM on an MSI Pulse 15 B13VFK laptop.
 
 In the top level `data` directory inside Machine learning, there are 4 cropped and full sample images of different parameter combinations for a range of prints. These are labelled `image [A B].jpg` where each of A and  B are numbers 0, 1, and 2 corresponding to low, good, and high levels respectively. Each letter is for the four different parameters: A - Layer height, B - Extrusion amount
 
