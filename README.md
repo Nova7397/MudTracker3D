@@ -12,7 +12,7 @@ This github repository reflects the workflow diagram shown above categorizing th
 We have also provided sample images from the dataset and processed result samples in each folder for reference. 
 
 ### Overall calibration flowchart:
-Following flowchart shows our main flowchart for our current final auto-calibration tool present : 4_Machine_Learning/Auto_correction_workflow_testlines.py
+Following flowchart shows our main flowchart for our current final auto-calibration tool present at: 4_Machine_Learning/Auto_correction_workflow_testlines.py
 
 ![Main Flowchart](https://github.com/Nova7397/MudTracker3D/blob/main/media/Main_Flowchart.png)
 
