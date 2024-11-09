@@ -1,0 +1,25 @@
+#Installation Guide
+1. Set up a Python virtual environment (optional but recommended):
+
+bash
+Copy code:
+python3 -m venv env
+source env/bin/activate   # On Windows, use `env\Scripts\activate`
+
+2. Install dependencies: Use the requirements.txt file for easy installation.
+
+bash
+Copy code:
+pip install -r requirements.txt
+
+3. Special Instructions for Raspberry Pi:
+
+- libcamera and picamera2 are specific to Raspberry Pi.
+- Ensure you’ve enabled your camera and installed libcamera on your Raspberry Pi OS:
+bash
+Copy code
+sudo apt update
+sudo apt install -y libcamera-dev python3-libcamera
+
+-Follow Raspberry Pi's camera setup guide if needed.
+-Run the code auto_dta_recorder: Once installed, you should be ready to run our data collection script!

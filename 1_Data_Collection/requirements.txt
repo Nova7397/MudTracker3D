@@ -1,0 +1,6 @@
+requests
+pillow
+csv
+datetime
+libcamera
+picamera2
