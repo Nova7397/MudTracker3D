@@ -4,7 +4,7 @@ Accompanying code to CORE 2024 project: "MudTracket3d- Clay 3d printing extrusio
 ### Folders: 
 ## 1. Data collection 
 This folder contains the codes to connect the system setup with raspberry pi and the WASP printer in order to create our dataset. Following illustration shows our setup for dataset collection:
-![Rating](attachment:media/Hardware%Setup.png)
+![Hardware Setup](https://github.com/Nova7397/MudTracker3D/blob/main/media/Hardware%20Setup.png)
 
 Data Visualization folder contains all the codes used to visualize the data into graphs for presentation
 Data folder has class definitions to transform and prepare splitted dataset for machine learning
