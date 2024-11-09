@@ -70,4 +70,4 @@ Completed 8 predictions in 0.56s
 Our final folder consists of grasshopper script of our custom slicer developed to slice a geometry for 3D printing clay using WASP printer.
 
 ## Media
-Media folder consists of necessary documentation images/videos.
+Media folder consists of necessary documentation images.
