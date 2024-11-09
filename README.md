@@ -2,7 +2,7 @@
 Accompanying code to CORE 2024 project: "MudTracket3d- Clay 3d printing extrusion monitoring and auto-calibration using Machine Learning"
 Aim: To develop an auto calibration system for adjusting Layer height and Extrusion amount for WASP clay 3D printing using Machine Learning.
 ### Project process workflow:
-![Main_Workflow](https://github.com/Nova7397/MudTracker3D/blob/main/media/Main%20Workflow.png))
+![Main_Workflow](https://github.com/Nova7397/MudTracker3D/blob/main/media/Main%20Workflow.png)
 
 This github repository reflects the workflow diagram shown above categorizing the overall scripts into four sub-folders. Each folder consists of more information of process workflows within README jupyter notebooks. Each folder has requirement dependencies and installation guidelines that are required for running the scripts. 
 *PLEASE NOTE THAT THE MACHINE LEARNING MODEL AND AUTO CALIBRATION LOOP IS IMPLEMENTED USING PYTHON v3.6.8*
@@ -11,6 +11,7 @@ We have also provided sample images from the dataset and processed result sample
 
 ### Overall calibration flowchart:
 Following flowchart shows our main flowchart for our current final auto-calibration tool present : 4_Machine_Learning/Auto_correction_workflow_testlines.py
+
 ![Main Flowchart](https://github.com/Nova7397/MudTracker3D/blob/main/media/Main_Flowchart.png)
 
 ### Folders: 
@@ -19,15 +20,23 @@ This folder contains the codes to connect the system setup with raspberry pi and
 
 ![Hardware Setup](https://github.com/Nova7397/MudTracker3D/blob/main/media/Hardware%20Setup.png)
 
-## 1. Data collection
-Data Visualization folder contains all the codes used to visualize the data into graphs for presentation
-Data folder has class definitions to transform and prepare splitted dataset for machine learning
-Model folder contains the Machine learning network
+## 2. Data Rating
+This folder contains all the scripts used for objective assessment using elevation images of printed specimens. Sample images and description is provided within the folder. This Rating collectively for each specimen is used to identify parameter labels for our Final dataset. Visualization of rating parameters can also be found in this folder.
 
-Files:
-train_config.py contains the training settings- hyperparameters for training the model
-train.py is the code to run for training the model
-samples.py is to be used to predict the parameter values for a given image(testing). This uses a checkpoint saved after the model is trained.
-test.py sets the seed for training and calls the classes.
+## 3. Data Preparation
+This folder contains a jupyter notebook with a set of code blocks that are in order and with descriptions to be followed to modify the raw dataset(s) into a single labelled final filtered dataset. Some sample raw images, processed images and csv files have been provided in the folder for reference. 
+The distribution of dataset labels visualization can be found in the folder.
+The final dataset csv used for the ML model is also provided here.
 
-Reference readmes contain the library requirements and the lisence data from 'https://github.com/cam-cambridge/caxton' - to be modified at the end based on our project.
+## 4. Machine Learning
+This folder for scripts using which we trained our Machine Learning model, and our main auto-calibration loop python file. 
+We use Attention 56 Network model for multi head classification task for our clay 3D printing parameter adjustments of layer height and extrusion amount. We implement a similar workflow from 'https://github.com/cam-cambridge/caxton' for FDM Printing using Plastic. All scripts in this folder have been implemented using Python v3.6.8. Kindly follow the readme instructions carefully for executing the scripts.
+
+### Attention 56 Network model:
+![MLmodel](https://github.com/Nova7397/MudTracker3D/blob/main/media/ML%20model.png)
+
+## Custom slicing(Grasshopper)
+Our final folder consists of grasshopper script of our custom slicer developed to slice a geometry for 3D printing clay using WASP printer.
+
+## Media
+Media folder consists of necessary documentation images/videos.
