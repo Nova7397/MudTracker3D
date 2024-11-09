@@ -27,8 +27,12 @@ To set up the necessary libraries, follow these steps:
     pip install -r requirements.txt
     Verify Installation
 
-3. After installation, you can check the libraries are installed by running:
+4. After installation, you can check the libraries are installed by running:
     bash
     Copy code
     pip freeze
 This will confirm the required libraries and versions are ready to use for the scripts.
+
+5. Additional Notes:
+
+We have used Python 3.12.7 for Data Rating

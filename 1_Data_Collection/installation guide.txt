@@ -23,3 +23,7 @@ sudo apt install -y libcamera-dev python3-libcamera
 
 -Follow Raspberry Pi's camera setup guide if needed.
 -Run the code auto_dta_recorder: Once installed, you should be ready to run our data collection script!
+
+5. Additional Notes:
+
+We have used Python 3.12.7 for Data Collection

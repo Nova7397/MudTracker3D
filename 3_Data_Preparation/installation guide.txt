@@ -1,0 +1,20 @@
+#Installation Guide
+1. Set up a virtual environment (optional but recommended):
+
+bash
+Copy code
+python3 -m venv env
+source env/bin/activate   # On Windows, use `env\Scripts\activate`
+
+2. Install dependencies: Use the requirements.txt file for easy installation:
+
+bash
+Copy code
+pip install -r requirements.txt
+
+3. Additional Notes:
+
+The libraries os, shutil, and random are part of Python’s standard library and do not require separate installation.
+Ensure you’re using Python 3.6 or above for compatibility with these packages. We have used Python 3.12.7 for Data Preparation
+
+4. Run your code: After installing the requirements, you’re all set to run your code.
