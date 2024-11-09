@@ -43,8 +43,7 @@ In the top level `data` directory inside Machine learning, there are 4 cropped a
 
 You can test these samples with the provided script and should receive an output similar to the one below. On our system iterating through each sample individually takes around 0.07s per sample. Naturally if the batch size is increased the rate per sample can be greatly increased.
 
-```bash
-python src/samples.py
+'```bash python src/samples.py'
 
 ********* CAXTON sample predictions *********
 Flow rate | Lateral speed | Z offset | Hotend
