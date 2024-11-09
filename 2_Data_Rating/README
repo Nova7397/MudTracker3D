@@ -10,11 +10,16 @@ Folder Structure:
 Select raw images in \Rating pics\Raw_file
 Output images will be saved in \Rating pics\Edge_detection\A1.4\
 #### Sample results have been saved in \Rating pics\Edge_detection\A1.4\ for reference
+![Rating pics/Edge_detection/A1.4/A1.4_overhang canny.png](Rating pics/Edge_detection/A1.4/A1.4_overhang canny.png) ![Rating pics/Edge_detection/A1.4/A1.4_zigzag_canny.png](Rating pics/Edge_detection/A1.4/A1.4_zigzag_canny.png) 
 
 #### Dependencies: Ensure the following libraries are installed:
     pencv-python
     matplotlib
     numpy
+
+
+
+
 
 
 
@@ -45,6 +50,44 @@ angle_resolution: Angle resolution in radians (1 degree).
 threshold: Minimum votes needed to detect a line (default is 40).
 Adjust these values to refine line detection as needed.
 
+#### Sample results have been saved in \Rating pics\Overhang_angle\A1.4\ for reference
+![Rating pics/Overhang_angle/A1.4/A1.4_overhang_modified.png](Rating pics/Overhang_angle/A1.4/A1.4_overhang_modified.png) ![Rating pics/Overhang_angle/A1.4/A1.4_overhang_modified-2.png](Rating pics/Overhang_angle/A1.4/A1.4_overhang_modified-2.png)
+
+
+
+
+
+
+
+## Area Calculation
+To calculate the total area covered by pure white regions in images, specifically for assessing overhang deviation and zigzag straightness.
+
+### Requirements
+Dependencies: Ensure you have OpenCV and NumPy installed.
+
+### Function Details
+calculate_white_area(image_path)
+Inputs: Path to the image file.
+
+### Process:
+Loads the image and creates a mask for pure white pixels ((255, 255, 255)).
+Counts the number of white pixels (area).
+Calculates the total area of the image.
+Computes the percentage of the image that is pure white.
+Returns: The white area in pixels and as a percentage of the image.
+
+### Example Output
+Running the script displays:
+
+Area of pure white color: [calculated pixels] pixels
+Percentage of pure white color: [calculated percentage]%
+
+#### Sample results have been saved in \Rating pics\Overhang_deviation\A1.4\ for reference
+![Rating pics/Overhang_deviation/A1.4/A1-l_raw.png](Rating pics/Overhang_deviation/A1.4/A1-l_raw.png) ![Rating pics/Overhang_deviation/A1.4/A1-r_raw.png](Rating pics/Overhang_deviation/A1.4/A1-r_raw.png)
+
+
+
+
 
 
 
@@ -62,12 +105,18 @@ Dependencies: Install the following packages if not already available:
 1. Heatmaps of Scores
 For each score type (Overhang, Zigzag, and Freeform), a heatmap is created.
 The heatmaps display how scores vary based on Layer_height and Extrusion_rate.
+![Rating assessment/Heatmap.png](Rating assessment/Heatmap.png)
+
 2. Parallel Coordinates Plot
 Shows patterns across scores for each combination of Layer_height and Extrusion_rate.
 This plot helps in visualizing the relationships and trends across different score types.
+![Rating assessment/Parallell Coordinates.png](Rating assessment/Parallell Coordinates.png)
+
 3. Pair Plot
 Provides pairwise relationships between all variables in the data.
 Useful for identifying correlations and trends between scores and the parameters.
+![Rating assessment/Comparison between different factors.png](Rating assessment/Comparison between different factors.png)
+
 4. 3D Scatter Plot
 Visualizes the relationship between Layer_height, Extrusion_rate, and the Overhang score.
 Offers a spatial perspective to observe how the overhang score is affected by the other two parameters.
