@@ -2,11 +2,12 @@
 [[ProjectVideo](https://youtu.be/TLkMxpruhxE)]
 
 Accompanying code to CORE 2024 project: "MudTracket3d- Clay 3d printing extrusion monitoring and auto-calibration using Machine Learning"
+
 Aim: To develop an auto calibration system for adjusting Layer height and Extrusion amount for WASP clay 3D printing using Machine Learning.
 ### Project process workflow:
 ![Main_Workflow](https://github.com/Nova7397/MudTracker3D/blob/main/media/Main%20Workflow.png)
 
-This github repository reflects the workflow diagram shown above categorizing the overall scripts into four sub-folders. Each folder consists of more information of process workflows within README jupyter notebooks. Each folder has requirement dependencies and installation guidelines that are required for running the scripts. 
+This github repository reflects the workflow diagram shown above categorizing the overall scripts into five main sub-folders. Each folder consists of more information of process workflows within README jupyter notebooks. Each folder has requirement dependencies and installation guidelines that are required for running the scripts. 
 *PLEASE NOTE THAT THE MACHINE LEARNING MODEL AND AUTO CALIBRATION LOOP IS IMPLEMENTED USING PYTHON v3.6.8*
 
 We have also provided sample images from the dataset and processed result samples in each folder for reference. 
@@ -57,7 +58,7 @@ You can test these samples with the provided script and should receive an output
 python src/samples.py
 
 ********* CAXTON sample predictions *********
-Flow rate | Lateral speed | Z offset | Hotend
+       Layer Height | Extrusion amount
 *********************************************
 Input: A1m_368.jpg_label_[1 1].jpg -> Prediction: [1 1]
 Input: B7a_279.jpg_label_[1 2].jpg -> Prediction: [1 2]
