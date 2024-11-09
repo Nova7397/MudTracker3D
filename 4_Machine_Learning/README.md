@@ -26,3 +26,16 @@ The command line arguments `-e` for number of epochs and `-s` for the seed can b
 
 After training the network is able to simulatneously predict the classification of the two parameters from a single input image with an average accuracy of 98%.
 
+**Heatmaps for parameter predictions on test samples:**
+[Heatmaps](https://github.com/Nova7397/MudTracker3D/blob/main/4_Machine_Learning/diagram/prediction%20result%20for%20model%206.png)
+
+**Preprocessed samples:**
+[cropped](https://github.com/Nova7397/MudTracker3D/blob/main/4_Machine_Learning/diagram/cropped%20images%20after%20preprocessing.png)
+
+**Visualizing attention masks of a single channel within the network:**
+[masks](https://github.com/Nova7397/MudTracker3D/blob/main/4_Machine_Learning/diagram/attention%20mask%20visualization_channel%200.png)
+
+
+## Calibration loop
+Run the calibration loop- Auto_correction_workflow_testlines.py file after establishing required the hardware setup with the WASP clay 3D printer as shown in 'Data collection'. A pop-up will appear for selecting the initial gcode settings- then the calibration loop starts with ML label predictions until a 'good' parameter combination is reached-> the parameter settings are then saved as a csv file in a specific location. The custom slicing grasshopper script can then be run to slice the opject with the setting in the csv file and save a gcode which is then sent sent to the printer.
+
