@@ -35,6 +35,26 @@ We use Attention 56 Network model for multi head classification task for our cla
 ### Attention 56 Network model:
 ![MLmodel](https://github.com/Nova7397/MudTracker3D/blob/main/media/ML%20model.png)
 
+### Results from samples in repo:
+
+The results for the models in this work were trained on a workstation running Ubuntu 18.04 equipped with an i9-9900K, 64GB RAM, 2x Nvidia Quadro RTX 5000 GPUs.
+
+In the top level `data` directory inside Machine learning, there are 4 cropped and full sample images of different parameter combinations for a range of prints. These are labelled `image [A B].jpg` where each of A and  B are numbers 0, 1, and 2 corresponding to low, good, and high levels respectively. Each letter is for the four different parameters: A - Layer height, B - Extrusion amount
+
+You can test these samples with the provided script and should receive an output similar to the one below. On our system iterating through each sample individually takes around 0.07s per sample. Naturally if the batch size is increased the rate per sample can be greatly increased.
+
+```bash
+python src/samples.py
+
+********* CAXTON sample predictions *********
+Flow rate | Lateral speed | Z offset | Hotend
+*********************************************
+Input: A1m_368.jpg_label_[1 1].jpg -> Prediction: [1 1]
+Input: B7a_279.jpg_label_[1 2].jpg -> Prediction: [1 2]
+Input: C2a_034.jpg_label_[2 1].jpg -> Prediction: [2 1]
+Input: D5a_044.jpg_label_[2 2].jpg -> Prediction: [2 2]
+Completed 8 predictions in 0.56s
+
 ## Custom slicing(Grasshopper)
 Our final folder consists of grasshopper script of our custom slicer developed to slice a geometry for 3D printing clay using WASP printer.
 
