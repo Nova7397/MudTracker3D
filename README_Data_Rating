@@ -10,7 +10,7 @@ Folder Structure:
 Select raw images in \Rating pics\Raw_file
 Output images will be saved in \Rating pics\Edge_detection\A1.4\
 #### Sample results have been saved in \Rating pics\Edge_detection\A1.4\ for reference
-![Rating pics/Edge_detection/A1.4/A1.4_overhang canny.png](Rating pics/Edge_detection/A1.4/A1.4_overhang canny.png) ![Rating pics/Edge_detection/A1.4/A1.4_zigzag_canny.png](Rating pics/Edge_detection/A1.4/A1.4_zigzag_canny.png) 
+![2_Data_Rating/Rating pics/Edge_detection/A1.4/A1.4_overhang canny.png](2_Data_Rating/Rating pics/Edge_detection/A1.4/A1.4_overhang canny.png) ![2_Data_Rating/Rating pics/Edge_detection/A1.4/A1.4_zigzag_canny.png](2_Data_Rating/Rating pics/Edge_detection/A1.4/A1.4_zigzag_canny.png) 
 
 #### Dependencies: Ensure the following libraries are installed:
     pencv-python
