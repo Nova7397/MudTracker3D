@@ -3,8 +3,8 @@ Clay 3d printing extrusion monitoring and auto-calibration using Machine Learnin
 
 ## Setup
 
-This repository allows you to easily train a multi-head residual attention neural network to classify the state of the four most important printing parameters: flow rate, lateral speed, Z offset, and hotend temperature from a single input image.
-First create a Python 3 virtual environment and install the requirements - this should only take a couple of minutes. We used PyTorch (v1.7.1), Torchvision (v0.8.2), and CUDA (v11.3) in this work. See the complete list of requirements in `requirements.txt`.
+This foldeer in our repository allows you to easily train a multi-head residual attention neural network to classify the state of the two most important clay 3D printing parameters: Layer height, extrusion amount from a single input image.
+First create a Python 3 virtual environment and install the requirements - this should only take a couple of minutes. We used PyTorch (v1.7.1), Torchvision (v0.8.2), and CUDA (v11.3) in this work. See the complete list of requirements in `requirements.txt`. We used Python v3.6.8 for all the scripts in this folder
 
 ```
 virtualenv -p python3 env
